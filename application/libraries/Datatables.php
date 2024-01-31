@@ -629,8 +629,8 @@
         return '{' . join(',', $json) . '}';
       }
     }
-	
-	 /**
+
+    /**
      * returns the sql statement of the last query run
      * @return type
      */
