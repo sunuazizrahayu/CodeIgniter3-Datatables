@@ -450,7 +450,7 @@
         $this->ci->db->select($this->columns);
       }
       $subquery = $this->ci->db->get_compiled_select($this->table);
-      $countingsql = "SELECT COUNT(*) FROM (" . $subquery . ") SqueryAux";
+      $countingsql = str_replace('*', 'COUNT(*)', $subquery);
       $query = $this->ci->db->query($countingsql);
       $result = $query->row_array();
       $count = $result['COUNT(*)'];
