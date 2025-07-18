@@ -448,8 +448,8 @@
         $this->ci->db->distinct($this->distinct);
         $this->ci->db->select($this->columns);
       }
-      $subquery = $this->ci->db->get_compiled_select($this->table);
-      $countingsql = str_replace('*', 'COUNT(*)', $subquery);
+      $subquery = $this->ci->db->select('1', FALSE)->get_compiled_select($this->table);
+      $countingsql = "SELECT COUNT(*) FROM (" . $subquery . ") SqueryAux";
       $query = $this->ci->db->query($countingsql);
       $result = $query->row_array();
       $count = $result['COUNT(*)'];
